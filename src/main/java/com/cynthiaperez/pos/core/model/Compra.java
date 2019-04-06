@@ -13,15 +13,18 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity // defino que va a ser una entidad
-@Table(name="compras")
+@Table(name="compra")
 public class Compra implements Serializable { // la clase va a ser serializable para marshalin y unmarshaling
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //llave primaria
-    @Column(name="numeroDocumento")
+    @Column(name="id_compra")
+    private Long idCompra;
+    
+    @Column(name="numero_documento")
     private Long numeroDocumento;
     
     @ManyToOne(fetch=FetchType.LAZY) //muchos a uno
-    @JoinColumn(name="codigoProveedor")
+    @JoinColumn(name="codigo_proveedor")
     private Proveedor proveedor;
     
     @Column(name="fecha")
@@ -34,13 +37,23 @@ public class Compra implements Serializable { // la clase va a ser serializable 
     public Compra() {
     }
 
-    public Compra(Long numeroDocumento, Proveedor proveedor, Date fecha) {
+    public Compra(Long idCompra, Long numeroDocumento, Proveedor proveedor, Date fecha, Double total) {
+        this.idCompra = idCompra;
         this.numeroDocumento = numeroDocumento;
         this.proveedor = proveedor;
         this.fecha = fecha;
+        this.total = total;
     }
-    
+
+    public Long getIdCompra() {
+        return idCompra;
+    }
+
     //Get y Set
+    public void setIdCompra(Long idCompra) {
+        this.idCompra = idCompra;
+    } 
+
     public Long getNumeroDocumento() {
         return numeroDocumento;
     }
