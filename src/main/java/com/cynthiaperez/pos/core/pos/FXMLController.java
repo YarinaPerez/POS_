@@ -1,4 +1,4 @@
-package com.cynthiaperez.almacen.core.pos;
+package com.cynthiaperez.pos.core.pos;
 
 import java.net.URL;
 import java.util.ResourceBundle;

@@ -1,4 +1,4 @@
-package com.cynthiaperez.almacen.core.pos;
+package com.cynthiaperez.pos.core.pos;
 
 import javafx.application.Application;
 import static javafx.application.Application.launch;

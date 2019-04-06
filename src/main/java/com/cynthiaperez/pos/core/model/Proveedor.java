@@ -6,29 +6,41 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+// inicio area de anotaciones
 @Entity //Identifica que la clase va a estar pegada a la tabla
-@Table(name="proveedor")
+@Table(name = "proveedor")
+@NamedQueries({
+    @NamedQuery(name = "Proveedor.findAll", query = "select p Proveedor p")
+    ,
+    @NamedQuery(name = "Proveedor.finAllOrderByNit", query = "select p from Proveedor p order by Nit")
+    ,
+    @NamedQuery(name = "Proveedor.findByCodigoProveedor", query = "select p from Proveedor p where p.codigoProveedor = ?1")
+})
+// fin area de anotaciones
 public class Proveedor implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //llave primaria
-    @Column(name="codigo_proveedor")
+    @Column(name = "codigo_proveedor")
     private Long codigoProveedor;
-    
-    @Column(name="nit")
+
+    @Column(name = "nit")
     private String nit;
-    
-    @Column(name="razon_social")
+
+    @Column(name = "razon_social")
     private String razonSocial;
-    
-    @Column(name="direccion")            
+
+    @Column(name = "direccion")
     private String direccion;
-    
-    @Column(name="pagina_web")
+
+    @Column(name = "pagina_web")
     private String paginaWeb;
-    
-    @Column(name="contacto_principal")
+
+    @Column(name = "contacto_principal")
     private String contactoPrincipal;
 
     // Constructores
@@ -92,6 +104,4 @@ public class Proveedor implements Serializable {
     public void setContactoPrincipal(String contactoPrincipal) {
         this.contactoPrincipal = contactoPrincipal;
     }
-    
-    
 }
