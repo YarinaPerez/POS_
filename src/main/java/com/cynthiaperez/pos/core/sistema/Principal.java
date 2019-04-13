@@ -1,5 +1,7 @@
-package com.cynthiaperez.pos.core.pos;
+package com.cynthiaperez.pos.core.sistema;
 
+import com.cynthiaperez.pos.core.controller.ProveedorController;
+import com.cynthiaperez.pos.core.controller.VentanaPrincipalController;
 import java.io.IOException;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
@@ -10,38 +12,43 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
-public class MainApp extends Application {
+public class Principal extends Application {
     
-    private final String PAQUETE_VISTA = "com/cynthiaperez/pos/core/view";
+    private final String PAQUETE_VISTA = "/com/cynthiaperez/pos/core/view/";
     private Stage escenarioPrincipal;
 
     @Override
     public void start(Stage escenarioPrincipal) throws Exception { //Stage = escenario principal
         
-        this.escenarioPrincipal = escenarioPrincipal; //Capturo la refencia
-        
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
-        
-        scene.getStylesheets().add("/styles/Styles.css");
-        
-        stage.setTitle("JavaFX and Maven");
-        stage.setScene(scene);
-        stage.show();
+        this.escenarioPrincipal = escenarioPrincipal; //Capturo la refencia        
+        mostrarVentaPrincipal();
+        this.escenarioPrincipal.setTitle("Sistema de Control de Almacen V.1.0");
+        this.escenarioPrincipal.show();
     }
     
     public void mostrarVentaPrincipal() throws IOException{
-        
+        VentanaPrincipalController main = (VentanaPrincipalController)cambiarEscena("VentanaPrincipalView.fxml",800,600);
+        main.setPrincipal(this);
+    }
+    
+    public void mostrarVentanaProveedores() throws IOException{
+        ProveedorController proveedorController = (ProveedorController)cambiarEscena("ProveedorView.fxml",800,600);
+        proveedorController.setPrincipal(this);
     }
     
     public Initializable cambiarEscena(String fxml, int ancho, int alto) throws IOException{
         Initializable resultado = null;
         
         FXMLLoader loader = new FXMLLoader();        
-        Parent root = loader.load(getClass().getResource(PAQUETE_VISTA + "Scene.fxml"));
+        Parent root = loader.load(getClass().getResource(PAQUETE_VISTA + fxml));
         
-        Scene escena = new Scene(root,ancho,alto); // Creacion de la escena
+        Scene escena = new Scene(root,ancho,alto); // Creacion de la escena        
+        escena.getStylesheets().add("/styles/Styles.css");
+        
         this.escenarioPrincipal.setScene(escena);
         this.escenarioPrincipal.sizeToScene();
+        
+        resultado = (Initializable)loader.getController();
         
         return resultado;
     }
