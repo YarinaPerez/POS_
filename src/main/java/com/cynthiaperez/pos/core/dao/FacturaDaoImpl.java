@@ -1,18 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.cynthiaperez.pos.core.dao;
 
 import com.cynthiaperez.pos.core.db.Conexion;
 import com.cynthiaperez.pos.core.model.Factura;
 import java.util.List;
 
-/**
- *
- * @author josebaten
- */
+
 public class FacturaDaoImpl implements FacturaDao {
 
     @Override

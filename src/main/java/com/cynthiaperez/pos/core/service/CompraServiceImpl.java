@@ -6,9 +6,9 @@ import com.cynthiaperez.pos.core.model.Compra;
 import java.util.List;
 
 public class CompraServiceImpl implements CompraService {
-    
-    private final CompraDao compraDao = new CompraDaoImpl();
 
+    private final CompraDao compraDao = new CompraDaoImpl();
+    
     @Override
     public List<Compra> findAllCompra() {
         return compraDao.findAllCompra();

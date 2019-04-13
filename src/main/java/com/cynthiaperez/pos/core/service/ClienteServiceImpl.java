@@ -6,7 +6,9 @@ import com.cynthiaperez.pos.core.model.Cliente;
 import java.util.List;
 
 public class ClienteServiceImpl  implements ClienteService {
+    
     private final ClienteDao clienteDao = new ClienteDaoImpl();
+    
     @Override
     public List<Cliente> findAllCliente() {
         return clienteDao.findAllCliente();

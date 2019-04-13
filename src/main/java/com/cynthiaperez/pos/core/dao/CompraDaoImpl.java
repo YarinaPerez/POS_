@@ -5,6 +5,7 @@ import com.cynthiaperez.pos.core.model.Compra;
 import java.util.List;
 
 public class CompraDaoImpl implements CompraDao {
+    
 
     @Override
     public List<Compra> findAllCompra() {

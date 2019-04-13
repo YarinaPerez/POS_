@@ -6,6 +6,7 @@ import java.util.List;
 
 public class ClienteDaoImpl implements ClienteDao {
 
+    
     @Override
     public List<Cliente> findAllCliente() {
         return (List<Cliente>)Conexion.getInstancia().findAll(Cliente.class);

@@ -5,6 +5,7 @@ import java.util.List;
 
 
 public interface FacturaService {     
+    
     public List<Factura> findAllFactura();
     public Factura findById(Long numeroFactura);
     public void saveFactura(Factura elemento);
